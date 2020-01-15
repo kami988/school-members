@@ -43,7 +43,8 @@ class DynamoDBTodo(TodoDB):
                 'id':  id,
             }
         )
-        return id
+        response = 'create id:' + id + ', subject:' + subject + ', name:' + name + ', remarks:' + remarks + '\n'
+        return response
 
     def update_item(self, id, subject=None, name=None, mail=None, remarks=None):
         # We could also use update_item() with an UpdateExpression.

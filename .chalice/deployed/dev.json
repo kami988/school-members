@@ -1,10 +1,10 @@
 {
   "resources": [
     {
-      "name": "default-role",
+      "name": "api_handler_role",
       "resource_type": "iam_role",
-      "role_arn": "arn:aws:iam::182903388098:role/school-members-dev",
-      "role_name": "school-members-dev"
+      "role_arn": "arn:aws:iam::182903388098:role/school-members-dev-api_handler",
+      "role_name": "school-members-dev-api_handler"
     },
     {
       "name": "api_handler",
