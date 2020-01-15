@@ -3,7 +3,7 @@ from uuid import uuid4
 from boto3.dynamodb.conditions import Key
 
 
-class TodoDB(object):
+class SchoolMembersDB(object):
     def list_all_items(self):
         pass
 
@@ -16,7 +16,7 @@ class TodoDB(object):
     def update_item(self, id, subject=None, name=None, mail=None, remarks=None):
         pass
 
-class DynamoDBTodo(TodoDB):
+class DynamoDBSchoolMembers(SchoolMembersDB):
     def __init__(self, table_resource):
         self._table = table_resource
 
@@ -43,8 +43,7 @@ class DynamoDBTodo(TodoDB):
                 'id':  id,
             }
         )
-        response = 'create id:' + id + ', subject:' + subject + ', name:' + name + ', remarks:' + remarks + '\n'
-        return response
+        return id
 
     def update_item(self, id, subject=None, name=None, mail=None, remarks=None):
         # We could also use update_item() with an UpdateExpression.
@@ -58,4 +57,4 @@ class DynamoDBTodo(TodoDB):
         if remarks is not None:
             item['remarks'] = remarks
         self._table.put_item(Item=item)
-        return 'updated'
+        return id
