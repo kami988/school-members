@@ -20,17 +20,17 @@ def get_app_db():
 #top
 @app.route('/', methods=['GET'])
 def get_top():
-    return 'wlcome to School Members APIです'
+    return 'wlcome to School Members API'
 
 #全員参照
 @app.route('/members', methods=['GET'])
 def get_members():
-    return str(get_app_db().list_all_items())
+    return get_app_db().list_all_items()
 
 #一人参照
 @app.route('/members/{id}', methods=['GET'])
 def get_member(id):
-    return str(get_app_db().get_item(id))
+    return get_app_db().get_item(id)
 
 #追加
 @app.route('/members', methods=['POST'])
@@ -42,7 +42,7 @@ def add_new_member():
         mail=body.get('mail'),
         remarks=body.get('remarks'),
     )
-    return str(get_member(id))
+    return get_member(id)
 
 #更新
 @app.route('/members/{id}', methods=['PUT'])
@@ -55,4 +55,4 @@ def update_SchoolMembers(id):
         mail=body.get('mail'),
         remarks=body.get('remarks')
     )
-    return str(get_member(id))
+    return get_member(id)

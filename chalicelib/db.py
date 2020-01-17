@@ -10,7 +10,7 @@ class SchoolMembersDB(object):
     def get_item(self, id):
         pass
 
-    def add_item(self, subject, name, mail=None, remarks=None):
+    def add_item(self, name, subject=None, mail=None, remarks=None):
         pass
 
     def update_item(self, id, subject=None, name=None, mail=None, remarks=None):
@@ -32,11 +32,11 @@ class DynamoDBSchoolMembers(SchoolMembersDB):
         )
         return response['Item']
 
-    def add_item(self, subject, name, mail=None, remarks=None):
+    def add_item(self, name, subject=None, mail=None, remarks=None):
         id = str(uuid4())
         self._table.put_item(
             Item={
-                'subject': subject,
+                'subject': subject if mail is not None else {},
                 'name': name,
                 'mail': mail if mail is not None else {},
                 'remarks': remarks if remarks is not None else {},

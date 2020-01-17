@@ -35,8 +35,8 @@ def create_table(table_name_prefix, id):
         KeySchema=key_schema,
         AttributeDefinitions=attribute_definitions,
         ProvisionedThroughput={
-            'ReadCapacityUnits': 50,
-            'WriteCapacityUnits': 50,
+            'ReadCapacityUnits': 10,
+            'WriteCapacityUnits': 10,
         }
     )
     waiter = client.get_waiter('table_exists')
